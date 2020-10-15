@@ -1,0 +1,26 @@
+
+name: TweetHadith
+
+on:
+  schedule:
+    - cron: "0 */1 * * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Run python script
+        run: |
+          python main.py
+        env:
+          twitter_key: ${{ secrets.twitter_key }}
+
