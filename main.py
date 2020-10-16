@@ -7,6 +7,7 @@ import json
 
 
 tweet_char_limit = 260
+total_tweet_thread_char_limit = 6 * 260  # should review again
 
 
 @dataclass
@@ -36,17 +37,24 @@ def get_prev_word_end_index(i, full_hadith):
 
 
 def chunk_tweet(hadith: Hadith):
-    full_hadith = "\n".join([hadith.hadith_number, hadith.narrator, hadith.content])
-    i = 0
-    j = 0
+    hadith.content = " ".join(hadith.content.split())  # some hadiths got unusual spaces
+    full_hadith = "\n".join(
+        [f"{hadith.chapter} ({hadith.hadith_number})", hadith.narrator, hadith.content]
+    )
+    i, j = 0, 0
     chunks = []
-    while i < len(full_hadith):
+    while i < len(full_hadith) and i < total_tweet_thread_char_limit:
         j += tweet_char_limit
         if j < len(full_hadith) and full_hadith[j] != " ":
             j = get_prev_word_end_index(j, full_hadith)
         chunks.append(full_hadith[i:j])
         i = j
-    link = f"\nFor convenient reading: {hadith.hadith_link}"
+
+    link = (
+        f"\n.........This is a very long Hadith, please continue reading here: {hadith.hadith_link}"
+        if i > total_tweet_thread_char_limit
+        else f"\nFor convenient reading: {hadith.hadith_link}"
+    )
     if len(chunks[-1]) < (tweet_char_limit - len(link)):
         chunks[-1] = chunks[-1] + link
     else:
