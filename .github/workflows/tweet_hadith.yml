@@ -17,10 +17,25 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.8
+      
+      - name: Install Requirements
+        run: pip install -r requirements.txt
 
       - name: Run python script
         run: |
           python main.py
         env:
-          twitter_key: ${{ secrets.twitter_key }}
+          API_KEY: ${{ secrets.API_KEY }}
+          API_SECRET: ${{ secrets.API_SECRET }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
 
+      - name: setup git config
+        run: |
+          git config user.name ${{ secrets.USERNAME }}
+          git config user.email ${{ secrets.EMAIL }}
+  
+      - name: commit changes
+        run: |
+          chmod +x ./scripts/commit.sh
+          ./scripts/commit.sh
