@@ -7,7 +7,7 @@ import json
 
 
 tweet_char_limit = 260
-total_tweet_thread_char_limit = 6 * 260  # should review again
+total_tweet_thread_char_limit = 4 * 260  # should review again
 
 
 @dataclass
