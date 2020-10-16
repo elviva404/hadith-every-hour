@@ -3,7 +3,7 @@ name: TweetHadith
 
 on:
   schedule:
-    - cron: "0 */1 * * *"
+    - cron: "*/10 * * * *"
 
 jobs:
   build:
