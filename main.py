@@ -95,7 +95,7 @@ def tweet_hadith():
         hadith = Hadith(**resp.json())
         hadith.hadith_link = hadith_link
         print_chunks(hadith)
-        # tweet(hadith)
+        tweet(hadith)
         hadith_number += 1
         with open("hadith_track.json", "w") as json_file:
             json_file.write(
