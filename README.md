@@ -1,6 +1,7 @@
 <p align="center">
  <h2 align="center">Hadith Every Hour</h2>
  <p align="center">📖 A bot that Tweets a Hadith every hour</p>
+ <p align="center"><i>(Every 3 hours for now to avoid spamming)</i></p>
 </p>
 <p align="center">
   Follow on Twitter <a href="https://twitter.com/HadithEveryHour">@HadithEveryHour</a>
@@ -20,6 +21,7 @@ And the rest of the process is self explanatory.
 
 A tracker is used to put the latest Tweeted Hadith number in the `hadith_track.json` file. 
 
+API's are from this project - https://github.com/Ananto30/ask-hadith
 
 ### Flow
 ```
