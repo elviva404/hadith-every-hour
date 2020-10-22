@@ -1,1 +1,5 @@
-{"hadith_book": "bukhari", "hadith_number": 78}
+{
+  "collection": "bukhari",
+  "book": 3,
+  "hadith": 21
+}

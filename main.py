@@ -6,18 +6,18 @@ from twitter import tweet
 
 
 def tweet_hadith():
-    hadith_book, hadith_number = get_hadith_track()
+    collection, book, hadith_no = get_hadith_track()
 
     hadith_source = "http://askhadith.herokuapp.com"
     full_hadith_source = "https://askhadith.herokuapp.com"
-    hadith_link = f"{full_hadith_source}/{hadith_book}/{hadith_number}"
+    hadith_link = f"{full_hadith_source}/{collection}/{book}/{hadith_no}"
 
-    resp = requests.get(f"{hadith_source}/api/{hadith_book}/{hadith_number}")
+    resp = requests.get(f"{hadith_source}/api/{collection}/{book}/{hadith_no}")
     if resp.json():
         hadith = Hadith(**resp.json())
         hadith.hadith_link = hadith_link
         tweet(hadith)
-        update_hadith_track(hadith_book, hadith_number)
+        update_hadith_track(collection, book, hadith_no)
 
 
 if __name__ == "__main__":

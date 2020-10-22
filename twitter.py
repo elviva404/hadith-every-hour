@@ -33,9 +33,13 @@ def make_tweet_thread(hadith: Hadith) -> List[str]:
     First body can be the main Tweet and the followings are comments
     that can be seen as a thread in Twitter.
     """
-    hadith.content = " ".join(hadith.content.split())  # some hadiths got unusual spaces
+    hadith.body_en = hadith.body_en.replace("ﷺ", "PBUH")
     full_hadith = "\n".join(
-        [f"{hadith.chapter} ({hadith.hadith_number})", hadith.narrator, hadith.content]
+        [
+            f"{hadith.collection} (Book {hadith.book_no}, Hadith {hadith.book_ref_no})",
+            hadith.narrator_en,
+            hadith.body_en,
+        ]
     )
     i, j = 0, 0
     chunks = []
@@ -47,7 +51,7 @@ def make_tweet_thread(hadith: Hadith) -> List[str]:
         i = j
 
     link = (
-        f"\n.........This is a very long Hadith, please continue reading here: {hadith.hadith_link}"
+        f"\n.........This is a long Hadith, please continue reading here: {hadith.hadith_link}"
         if i > total_tweet_thread_char_limit
         else f"\nFor convenient reading: {hadith.hadith_link}"
     )

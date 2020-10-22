@@ -3,10 +3,14 @@ from dataclasses import dataclass
 
 @dataclass
 class Hadith:
-    _id: str
-    hadith: str
-    chapter: str
-    narrator: str
-    content: str
-    hadith_number: str
+    collection_id: str
+    collection: str
+    book_en: str
+    book_no: str
+    chapter_en: str
+    chapter_no: str
+    narrator_en: str
+    body_en: str
+    hadith_no: str
+    book_ref_no: str
     hadith_link: str = None
