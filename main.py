@@ -10,7 +10,7 @@ def tweet_hadith():
 
     hadith_source = "http://askhadith.herokuapp.com"
     full_hadith_source = "https://askhadith.herokuapp.com"
-    hadith_link = f"{full_hadith_source}/{collection}/{book}/{hadith_no}"
+    hadith_link = f"{full_hadith_source}/b/{collection}/{book}/{hadith_no}"
 
     resp = requests.get(f"{hadith_source}/api/{collection}/{book}/{hadith_no}")
     if resp.json():
