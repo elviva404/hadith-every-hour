@@ -1,5 +1,6 @@
 import requests
 
+from facebook_page import post_on_page
 from model import Hadith
 from tracker import get_hadith_track, update_hadith_track
 from twitter import tweet
@@ -17,6 +18,7 @@ def tweet_hadith():
         hadith = Hadith(**resp.json())
         hadith.hadith_link = hadith_link
         tweet(hadith)
+        post_on_page(hadith)
         update_hadith_track(collection, book, hadith_no)
 
 
