@@ -13,4 +13,8 @@ class Hadith:
     body_en: str
     hadith_no: str
     book_ref_no: str
+    hadith_grade: str
+    in_book_ref: str
+    book_ref_en: str
+    book_ref_ar: str
     hadith_link: str = None
