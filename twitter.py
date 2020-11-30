@@ -37,7 +37,7 @@ def make_tweet_thread(hadith: Hadith) -> List[str]:
     full_hadith = "\n".join(
         [
             f"{hadith.collection} (Book {hadith.book_no}, Hadith {hadith.book_ref_no})",
-            hadith.narrator_en,
+            hadith.narrator_en if hadith.narrator_en else "",
             hadith.body_en,
         ]
     )
