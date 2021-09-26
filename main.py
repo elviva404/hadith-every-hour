@@ -4,7 +4,7 @@ from facebook_page import post_on_page
 from model import Hadith
 from tracker import get_hadith_track, update_hadith_track
 from twitter import tweet
-from tweepy.error import TweepError
+from tweepy.error import TweepyException
 
 
 def tweet_hadith():
@@ -20,7 +20,7 @@ def tweet_hadith():
         hadith.hadith_link = hadith_link
         try:
             tweet(hadith)
-        except TweepError as e:
+        except TweepyException as e:
             print(e)
         post_on_page(hadith)
         update_hadith_track(collection, book, hadith_no)
