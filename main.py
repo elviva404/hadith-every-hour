@@ -4,7 +4,7 @@ from facebook_page import post_on_page
 from model import Hadith
 from tracker import get_hadith_track, update_hadith_track
 from twitter import tweet
-from tweepy.error import TweepyException
+from tweepy.errors import TweepyException
 
 
 def tweet_hadith():
